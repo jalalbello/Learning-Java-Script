@@ -9,13 +9,48 @@
 <body>
     <script>
         function getComputerChoice(){
-            let choices = ["Rock", "Paper", "Scissors"]
+            let choices = ["ROCK", "PAPER", "SCISSORS"]
             // Gives random int from 0 to 2 as indexes start from 0
             let randomiser = Math.floor(Math.random() * 3) 
-            console.log(randomiser)
             return choices[randomiser]
         } 
-        console.log(getComputerChoice())
+
+        function round_play(playerSelection, computerSelection){
+            console.log(playerSelection)
+            if (playerSelection.toUpperCase() == 'ROCK' && computerSelection == 'ROCK'){
+                return(`Tie, You both picked ${computerSelection}`)
+            }
+            else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection == 'PAPER'){
+                return(`Tie, You both picked ${computerSelection}`)
+            }
+            else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection == 'SCISSORS'){
+                return(`Tie, You both picked ${computerSelection}`)
+            }
+            else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection == 'PAPER'){
+                return(`You lose, ${computerSelection} Beats ${playerSelection}`)
+            }
+            else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection == 'SCISSORS'){
+                return(`You lose, ${computerSelection} Beats ${playerSelection}`)
+            }
+            else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection == 'ROCK'){
+                return(`You lose, ${computerSelection} Beats ${playerSelection}`)
+            }
+            else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection == 'SCISSORS'){
+                return(`You win, ${playerSelection} Beats ${computerSelection}`)
+            }
+            else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection == 'ROCK'){
+                return(`You win, ${playerSelection} Beats ${computerSelection}`)
+            }
+            else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection == 'PAPER'){
+                return(`You win, ${playerSelection} Beats ${computerSelection}`)
+            }
+        }
+
+        function game(){
+            let computerSelection = getComputerChoice()
+            let playerSelection = prompt('Enter, Rock, Paper, Scissors')
+            console.log(round_play(playerSelection, computerSelection))}
+        for (let i = 0; i < 5; i++) {game()}
     </script>
 </body>
 </html>
