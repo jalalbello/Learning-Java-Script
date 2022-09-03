@@ -19,5 +19,8 @@ textBox.addEventListener('keydown', (event) => {
 });
 ```
 - What is function scope?
+> Each Functions Creates a new scope, variables defined inside a function are not accesible from outside the function
 - What are return values?
+> The values that a function returns when it has completed
 - What are arrow functions?
+> A new way to write anonymous function expressions
