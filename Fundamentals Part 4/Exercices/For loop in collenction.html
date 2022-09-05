@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const cats = ['Pete', 'Biggles', 'Jasmine'];
+
+    let myFavoriteCats = 'My cats are called ';
+
+    for (let i = 0; i< cats.length; i++){
+        //  last array index is at length - 1, and we want to modify last output
+        // we use most likely condition first(that its likely not last) to save runtime
+        if (i != cats.length-1){
+            myFavoriteCats += `${cats[i]}, `
+        }
+        else{
+            myFavoriteCats += `and ${cats[i]}.`
+        }
+    }
+
+    console.log(myFavoriteCats); 
+    </script>
+</body>
+</html>
