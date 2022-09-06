@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="search">Search by contact name: </label>
+    <input id="search" type="text">
+    <button>Search</button>
+    <p></p>
+    <script>
+        const contacts = ['Chris:2232322', 'Sarah:3453456', 'Bill:7654322', 'Mary:9998769', 'Dianne:9384975'];
+        const para = document.querySelector('p');
+        const input = document.querySelector('input');
+        const btn = document.querySelector('button');
+        // Wrting Click instead of click will not flag you on VS but will make the code not work
+        btn.addEventListener
+        ('click', function()
+        {
+            //. value == Get the value of a text field
+            const searchName = input.value.toLowerCase();
+            input.value = ''
+            // . focus() gives focus to the elem
+            input.focus();
+            para.textContent = '';
+            for (const contact of contacts)
+            {
+                const splitContact = contact.split(":")
+                // [0] to get only the name
+                //! Do not end if statements with semicolon;
+                if (splitContact[0].toLowerCase() === searchName)
+                { para.textContent =`${splitContact[0]}'s number is ${splitContact[1]}.`;
+                break;
+                }
+            }
+            if (para.textContent === ''){
+                para.textContent = 'Contact not found.'
+            }
+        })
+    </script>
+<p></p>
+</body>
+</html>

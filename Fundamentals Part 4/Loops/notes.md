@@ -138,12 +138,74 @@ In this case we can do something like this
 **Exiting loops with break**
 
 </h3>
+To exit a loop before all the iterations have been completed, we can use the break statement. 
+
+A break statement will immediately exit the loop
+
+<br>
+<h3>
+
+**Skipping iterations with continue**
+</h3>
+
+The continue is like break, but instead of exiting it skips the code that comes afterwards
+
+<br>
+<br>
+<br>
+<h3>
+
+**while()**
+
+</h3>
 
 
 ```js
+Syntax
 
+initializer
+while (condition) {
+  // code to run
+
+  final-expression
+}
 ```
+
+The initializer variable is set before the loop, and the final-expression is included inside the loop after the code to run, rather than these two items being included inside the parentheses like in the for loop
+
+
 <br>
+<br>
+<br>
+<h3>
+
+**do .. while**
+
+</h3>
+
+
+```js
+Syntax
+
+initializer
+do {
+  // code to run
+
+  final-expression
+} while (condition)
+```
+
+The diffrence between while and do while is that the code inside the do while is always executed at least once
+
+Its cuz the condition comes after the code, so we run it, and check if we need to run it again
+
+Unlike while and for where the check comes first so it might never be executed
+
+
+<br>
+<br>
+
+
 <br>
 <h3>
 
@@ -155,4 +217,31 @@ In this case we can do something like this
 ```js
 
 ```
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<h3>
+
+**When to use standard for loop in collenctions**
+
+</h3>
+
+
+```js
+
+```
+<br>
 <br>

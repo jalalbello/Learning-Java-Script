@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="number">Enter number: </label>
+    <input id="number" type="text">
+    <button>Generate integer squares</button> 
+    <p>Output: </p>
+    <script>
+        const para = document.querySelector('p');
+        const input = document.querySelector('input');
+        const btn = document.querySelector('button');
+        btn.addEventListener
+        ('click', function(){
+            para.textContent = 'Output: ';
+            const num = input.value;
+            input.focus();
+            // i = 0 and i < 0 is not whats good here
+            // We are not interested in 0 in this case, and the last num needs to be accounted for, like if you input 100 you should get 100
+            for (let i = 1; i<= num; i++)
+            {
+            let sqRoot= Math.sqrt(i);
+            console.log(sqRoot)
+            console.log(Math.floor(sqRoot))
+            //The Math.floor() function returns the largest integer less than or equal to a given number.      
+            if (Math.floor(sqRoot) != sqRoot){continue;}
+            // so basicly if sqroot has no ,comma, then its sqrooted by itself and need to be added
+            para.textContent += `${i} `;
+            }
+        })
+    </script>
+<p></p>
+</body>
+</html>
