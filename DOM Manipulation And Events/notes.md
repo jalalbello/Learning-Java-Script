@@ -180,8 +180,95 @@ div.innerHTML = '<span>Hello World!span>';
 // renders the HTML inside div
 ```
 
-## Small Recap
+### Small Recap
 
 Js will not alter your html, it will only change what your browser renders
 
+### Events
 
+Now that we can manipulate the DOM with js, we need to make it dynamically, or on demande!
+
+Events are how we make magic happen on our pages, they are actions that occur on our page such as mouse-clicks or keypresses, and using js we can make our webpage listen and react to them
+
+There are three methods of doing events
+
+#### Method 1
+
+``` js
+<button onclick="alert('Hello World')">Click Me</button>
+```
+Not ideal because we’re cluttering our HTML with JavaScript. Also, we can only have 1 “onclick” event per element.
+
+#### Method 2
+
+``` js
+const btn = document.querySelector('#btn');
+btn.onclick = () => alert("Hello World");
+```
+We’ve moved the JS out of the HTML and into a JS file, but we still have the problem that a DOM element can only have 1 “onclick” property.
+
+#### Method .
+``` js
+// the JavaScript file
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', () => {
+  alert("Hello World");
+});
+```
+Method 3 is much more flexible and powerful, and we also allow multiple event listeners if the need arises.
+
+
+> We can use named functions isntead of arrow functions on all the previous methods
+
+### Call backs .
+
+Callbacks are just functions passed into other functions as arguments
+
+```js
+const notes = ['do', 're', 'me'];
+
+notes.forEach((note) => console.log(note));
+```
+
+In this example, the e in this function is an object that refrences the event itself
+
+```js
+btn.addEventListener('click', function (e) {
+  console.log(e);
+});
+```
+
+we can also pass args into the e
+ 
+```js
+console.log(e.target);
+ or :
+e.target.style.background = 'blue';
+```
+
+### Attaching Listeners to Groups of Nodes
+
+We can use querySelectorAll() to get the nodelist of all items matching this specific selector
+
+In order to add a listener to each of them we simply need to iterate through the whole list like so:
+
+```js
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener('click', () => {
+    alert(button.id);
+  });
+});
+```
+
+Some other usefull events include : 
+- click
+- dblclick
+- keydown
+- keyup
+
+[You can find a more complete list with explanations of each event on this page.](https://www.w3schools.com/jsref/dom_obj_event.asp)

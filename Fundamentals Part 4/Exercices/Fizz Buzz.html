@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let user_input = prompt('enter a number');
+let counter = 0;
+
+while(counter<user_input){
+counter +=1;
+switch(true)
+{case (counter %3== 0 && counter %5==0):
+console.log("FizzBuzz");
+break;
+case counter %3==0:
+console.log("Fizz");
+break;
+case counter %5==0:
+console.log("buzz");
+break;
+default:
+console.log(counter);}}   
+
+// The code works cuz Switch is TRUE, the () in the switch statement is like and IF it makes teh code execute only if that condition is met
+
+</script>
+</body>
+</html>
