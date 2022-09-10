@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    <button class="ROCK">ROCK</button>
+    <button class="PAPER">PAPER</button>
+    <button class="SCISSORS">SCISSORS</button>
     <script>
         function getComputerChoice(){
             let choices = ["ROCK", "PAPER", "SCISSORS"]
@@ -14,9 +17,11 @@
             let randomiser = Math.floor(Math.random() * 3) 
             return choices[randomiser]
         } 
-
+        let i = 0
+        let computerScore = 0
+        let playerScore = 0
         function round_play(playerSelection, computerSelection){
-            console.log(playerSelection)
+            i++
             if (playerSelection.toUpperCase() == 'ROCK' && computerSelection == 'ROCK'){
                 return(`Tie, You both picked ${computerSelection}`)
             }
@@ -27,30 +32,77 @@
                 return(`Tie, You both picked ${computerSelection}`)
             }
             else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection == 'PAPER'){
+                computerScore++
                 return(`You lose, ${computerSelection} Beats ${playerSelection}`)
             }
             else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection == 'SCISSORS'){
+                computerScore++
                 return(`You lose, ${computerSelection} Beats ${playerSelection}`)
             }
             else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection == 'ROCK'){
+                computerScore++
                 return(`You lose, ${computerSelection} Beats ${playerSelection}`)
             }
             else if (playerSelection.toUpperCase() == 'ROCK' && computerSelection == 'SCISSORS'){
+                playerScore++
                 return(`You win, ${playerSelection} Beats ${computerSelection}`)
             }
             else if (playerSelection.toUpperCase() == 'PAPER' && computerSelection == 'ROCK'){
+                playerScore++
                 return(`You win, ${playerSelection} Beats ${computerSelection}`)
             }
             else if (playerSelection.toUpperCase() == 'SCISSORS' && computerSelection == 'PAPER'){
+                playerScore++
                 return(`You win, ${playerSelection} Beats ${computerSelection}`)
             }
+            console.log(playerScore);
+            console.log(computerScore);
+            console.log(i);
         }
 
-        function game(){
-            let computerSelection = getComputerChoice()
-            let playerSelection = prompt('Enter, Rock, Paper, Scissors')
-            console.log(round_play(playerSelection, computerSelection))}
-        for (let i = 0; i < 5; i++) {game()}
+        function playerSelection(e){
+            e.stopPropagation();
+            console.log()
+            return this.classList.value;
+        }
+        const body = document.querySelector('body')
+        const rockBtn = document.querySelector('.ROCK')
+        const paperBtn = document.querySelector('.PAPER')
+        const scissorsBtn = document.querySelector('.SCISSORS')
+        const div = document.createElement('div')
+        body.appendChild(div)
+
+        rockBtn.addEventListener('click', function(e){
+            if (i < 5){
+            div.innerText += round_play('rock', getComputerChoice()) + '\n'
+            }                        else if (i == 5){displayScore()}
+        })
+        paperBtn.addEventListener('click', function(e){
+            if (i < 5){
+            div.innerText += round_play('paper', getComputerChoice()) + '\n'
+            }                        else if (i == 5){displayScore()}
+        })
+        scissorsBtn.addEventListener('click', function(e){
+            if (i < 5){
+            div.innerText += round_play('scissors', getComputerChoice()) + '\n';
+            }
+            else if (i == 5){displayScore()}
+        })
+
+        function displayScore(){
+            if (computerScore === playerScore){
+                div.innerText += '\n' + 'You tied'
+            }
+            if (computerScore > playerScore){
+                div.innerText += '\n' + 'You lost'
+            }
+            if (computerScore < playerScore){
+                div.innerText += '\n' + 'You win'
+            }
+            i ++
+        }
+        //! Could not do an if statement for an event listener
+
     </script>
 </body>
 </html>
