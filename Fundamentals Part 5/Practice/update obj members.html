@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+const person = {}
+const myDataName = 'height';
+const myDataValue = '1.75m';
+// person.myDataName = myDataValue;
+// Object { myDataName: "1.75m" }
+
+/* ! dot notation, which can only accept a literal member name, not a variable value pointing to a name. */
+
+// console.log(person);
+
+person[myDataName] = myDataValue;
+// Object { height: "1.75m" }
+console.log(person);
+
+
+// if value does not exist it gets created, other wise its updated
+    </script>
+</body>
+</html>

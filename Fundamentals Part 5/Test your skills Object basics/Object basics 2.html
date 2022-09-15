@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+// Put your code here
+
+function FavoriteBand (name, nationality, genre, members, formed, albums, split = false) {
+  this.name = name
+  this.nationality = nationality
+  this.genre = genre
+  this.members = members
+  this.formed = formed
+  this.split = split
+  this.albums = albums
+}
+
+// since split was set as false, not entering a split date or bool will return false
+
+const band = new FavoriteBand('sabaton', 'finland', 'rock', 2, 1945,  ['Motherland', 'Fatherland', 'Ghost division'])
+
+let bandInfo = `My favorite band is ${band.name}, they are based in ${band.nationality}, they make ${band.genre}, they have ${band.members} members, they were formed in ${band.formed}, their albums are ${band.albums}`
+// Don't edit the code below here
+
+
+let para1 = document.createElement('p');
+para1.textContent = bandInfo;
+section.appendChild(para1);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let person = {
+    age: 25,
+    name: ['Jalal', 'Bellouchi'],
+    bio: function(){
+        console.log(`Hi my name is ${this.name[0]} ${this.name[1]} and I'm ${this.age} years old` );
+    },
+    introduceSelf: function(){
+        console.log(`Hi my name is ${this.name[0]}`);
+    },
+    // ! Using arrow function instead of anon function seems to not work
+}
+person.bio()
+person.introduceSelf()
+</script>
+</body>
+</html>
