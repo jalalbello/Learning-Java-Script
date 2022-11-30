@@ -1,5 +1,13 @@
-.box1,
-.box2,
-.box3{
-    padding: 3rem
+button{
+width: 64px;
+height: 64px;
+font-size: 3rem;
+}
+div{
+    display: flex;
+    justify-content: center;
+}
+
+.win{
+    text-decoration: line-through;
 }

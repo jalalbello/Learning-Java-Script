@@ -1,6 +1,10 @@
 
 
 const Gameboard = (name1, name2) => {
+    // Init playing field
+    var getPlayer1Name = () => name1;
+    var getPlayer2Name  = () => name2;
+
     let gameBoard = [
         {id:1, content:""},
         {id:2, content:""},
@@ -12,26 +16,86 @@ const Gameboard = (name1, name2) => {
         {id:8, content:""},
         {id:9, content:""},
     ]
-    const div1= document.createElement("div");
-    const div2= document.createElement("div");
-    const div3= document.createElement("div");
-
+    // Append the buttons and assign the classes
+    const h1 = document.querySelector("h1");
+    const div1= document.createElement("div");const div2= document.createElement("div"); const div3= document.createElement("div");
     const body = document.querySelector("body");
-    body.appendChild(div1)
-    body.appendChild(div2)
-    body.appendChild(div3)
-    // for (let item of gameBoard){
-    //     const button = document.createElement("button")
-    //     if(item.id > 6){
-    //         div3.appendChild(button);
-    //     }
-    //     else if(item.id > 3){
-    //         div2.appendChild(button);
-    //     }
-    //     else {
-    //         div1.appendChild(button);
-    //     }
-    // }
+    body.appendChild(div1); body.appendChild(div2); body.appendChild(div3);
+
+    for (let item of gameBoard){
+        const button = document.createElement("button")
+        button.setAttribute("id", item.id)
+        button.onclick = function(e){boxClick(e)};
+        // Check on wich Div to append the buttons
+        if(item.id > 6){
+            div3.appendChild(button);
+        }
+        else if(item.id > 3){
+            div2.appendChild(button);
+        }
+        else {
+            div1.appendChild(button);
+        }
     }
 
-    Gameboard()
+    let gamePrompt = "yes";
+    if (gamePrompt === "yes"){
+        const randomiser = Math.floor(Math.random() * 2) 
+        if (randomiser === 0) {
+            h1.textContent = `${getPlayer1Name()} turn`
+        }
+        if (randomiser === 1) {
+            h1.textContent = `${getPlayer2Name()} turn`
+        }
+    }
+    const toggleWin = (...ids) =>{
+        for (let id of ids){
+            const clickedBox = document.getElementById(id)
+            clickedBox.classList.toggle("win");
+            console.log('dash');
+        }
+    }
+    }
+    // Click function of boxes
+    const boxClick = (e) => {
+        // Decide on turn
+        if (h1.textContent === `${getPlayer1Name()} turn` && gameBoard[e.target.id - 1].content === ""){
+            gameBoard[e.target.id - 1].content = "X"
+            h1.textContent = `${getPlayer2Name()} turn`
+        }
+        else if(h1.textContent === `${getPlayer2Name()} turn` && gameBoard[e.target.id - 1].content === ""){
+            gameBoard[e.target.id - 1].content = "O"
+            h1.textContent = `${getPlayer1Name()} turn`
+
+        }
+        for (let item of gameBoard){
+            if (item.content === "X" ||item.content === "O"){
+                const clickedBox = document.getElementById(`${item.id}`)
+                clickedBox.textContent = item.content
+            }
+        }
+
+        // Check for win
+        if (gameBoard[0].content === "X" && gameBoard[1].content === "X" && gameBoard[2].content === "X"){
+            h1.textContent = `${getPlayer1Name()} Wins`
+            toggLeWin(1,2,3)
+        }
+        else if (gameBoard[0].content === "O" && gameBoard[1].content === "O" && gameBoard[2].content === "O"){
+            h1.textContent = `${getPlayer2Name()} Wins`
+            toggLeWin(1,2,3)
+        }
+        if (gameBoard[3].content === "X" && gameBoard[4].content === "X" && gameBoard[5].content === "X"){
+            h1.textContent = `${getPlayer1Name()} Wins`
+        }
+        else if (gameBoard[3].content === "O" && gameBoard[4].content === "O" && gameBoard[5].content === "O"){
+            h1.textContent = `${getPlayer2Name()} Wins`
+        }
+        if (gameBoard[6].content === "X" && gameBoard[7].content === "X" && gameBoard[8].content === "X"){
+            h1.textContent = `${getPlayer1Name()} Wins`
+        }
+        else if (gameBoard[6].content === "O" && gameBoard[7].content === "O" && gameBoard[8].content === "O"){
+            h1.textContent = `${getPlayer2Name()} Wins`
+        }
+    }
+
+    Gameboard("Jalal", "Douae")
