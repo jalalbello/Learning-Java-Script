@@ -144,6 +144,14 @@ const Gameboard = (name1, name2) => {
                 h1.textContent = `${getPlayer2Name()} Wins`
                 toggleWin(3,6,9)
             }
+            function handleTie(box) {
+                return box.content !== "";
+            }
+            if (gameBoard.every(handleTie))  {
+                if (h1.textContent !== `${getPlayer2Name()} Wins` && h1.textContent !== `${getPlayer2Name()} Wins`){
+                h1.textContent = "Tie !"
+                }
+            };
         }
     }
 }
