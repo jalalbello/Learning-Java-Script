@@ -1,7 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Quicksand', sans-serif;
+    font-size: clamp(0.8rem,3vw,1.5rem);
+    text-align: center;
+    line-height: 3rem;
+}
 button{
-width: 64px;
-height: 64px;
-font-size: 3rem;
+width: clamp(64px,20%,1000px);
+height: 100px;
+font-size:5rem;
+}
+input{
+    font-size: clamp(0.8rem,3vw,2rem);
 }
 div{
     display: flex;

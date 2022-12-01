@@ -9,14 +9,17 @@
     <script src="main.js" defer></script>
 </head>
 <body>
+    <div class="container">
+        <p class="title">Ultimate Tic Tac Toe</p>
+    </div>
     <h1></h1>
     <form action="">
         <label for="">
-            <input type="text" value="Player 1">
+            Enter names:
         </label>
-        <label for="">
-            <input type="text" value="Player 2">
-        </label>
+        <input type="text" value="Player 1" id="p1">
+        <input type="text" value="Player 2" id="p2">
+        <input type="button" value="Play" onclick="gamePrompt()" id="play">
     </form>
 </body>
 </html>

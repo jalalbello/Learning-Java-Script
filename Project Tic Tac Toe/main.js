@@ -1,10 +1,4 @@
 
-
-const Gameboard = (name1, name2) => {
-    // Init playing field
-    var getPlayer1Name = () => name1;
-    var getPlayer2Name  = () => name2;
-
     let gameBoard = [
         {id:1, content:""},
         {id:2, content:""},
@@ -16,10 +10,21 @@ const Gameboard = (name1, name2) => {
         {id:8, content:""},
         {id:9, content:""},
     ]
+
+const Gameboard = (name1, name2) => {
+    
+    document.getElementById("p1").disabled = true; document.getElementById("p2").disabled = true
+    // Init playing field
+    var getPlayer1Name = () => name1;
+    var getPlayer2Name  = () => name2;
+
     // Append the buttons and assign the classes
     const h1 = document.querySelector("h1")
     const div1= document.createElement("div");const div2= document.createElement("div"); const div3= document.createElement("div");
     const body = document.querySelector("body");
+    div1.setAttribute("id","div1");
+    div2.setAttribute("id","div2");
+    div3.setAttribute("id","div3");
     body.appendChild(div1); body.appendChild(div2); body.appendChild(div3);
 
     for (let item of gameBoard){
@@ -38,16 +43,14 @@ const Gameboard = (name1, name2) => {
         }
     }
 
-    let gamePrompt = "yes";
-    if (gamePrompt === "yes"){
-        const randomiser = Math.floor(Math.random() * 2) 
-        if (randomiser === 0) {
-            h1.textContent = `${getPlayer1Name()} turn`
+
+    const randomiser = Math.floor(Math.random() * 2) 
+    if (randomiser === 0) {
+        h1.textContent = `${getPlayer1Name()} turn`
         }
-        if (randomiser === 1) {
-            h1.textContent = `${getPlayer2Name()} turn`
+    if (randomiser === 1) {
+        h1.textContent = `${getPlayer2Name()} turn`
         }
-    }
     
     // Click function of boxes
     const boxClick = (e) => {
@@ -56,7 +59,6 @@ const Gameboard = (name1, name2) => {
                 for (let id of ids){
                     const clickedBox = document.getElementById(id)
                     clickedBox.classList.toggle("win");
-                    console.log('dash');
                 }
             }
             // Decide on turn
@@ -155,5 +157,31 @@ const Gameboard = (name1, name2) => {
         }
     }
 }
+const gamePrompt = () => {
+    const play = document.getElementById("play")
+    play.value = "Play again"
+    const h1 = document.querySelector("h1")
+    if (!h1.textContent){ 
+    const p1 = document.getElementById("p1")
+    const p2 = document.getElementById("p2")
+    Gameboard(p1.value, p2.value)
+    } 
+    else if (h1.textContent.includes("Wins") || h1.textContent.includes("Tie")){
+        const p1 = document.getElementById("p1")
+        const p2 = document.getElementById("p2")
+        document.getElementById("p1").disabled = false; 
+        document.getElementById("p2").disabled = false
 
-    Gameboard("Jalal", "Douae")
+        const div1 = document.getElementById(`div1`)
+        const div2 = document.getElementById(`div2`)
+        const div3 = document.getElementById(`div3`)
+        div1.remove()
+        div2.remove()
+        div3.remove()
+        for (let item of gameBoard){
+            item.content = ""
+        }
+        Gameboard(p1.value, p2.value)
+    }
+}
+    // Gameboard("Jalal", "Douae")
