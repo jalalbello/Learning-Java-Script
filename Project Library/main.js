@@ -1,85 +1,44 @@
-"use strict";
+// Form block
+
 let myLibrary = [];
 
-
-// Start of Book Constructor
-function book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
+const toggleFormOpen = ( )=> {
+  const form = document.querySelector("form");
+  form.classList.toggle("form-toggle");
+  document.getElementById('newBookBtn').style.pointerEvents = 'none';
 }
 
-book.prototype.info = function() {
-    return (`${this.title} by ${this.author}, ${this.pages}, ${this.read}`)
-  }
-// End of Book Constructor
+const bookFactory = (title, author, pages, read) => {
+    const info = () => {return `${title} by ${author}, ${pages}, ${read}`}
+    return { title, author, pages, read, info};
+  };
 
-// Apend books to the Dom
-const createObject= () => {
+  const addBook = (event) => {
+    event.preventDefault();
     const pages = document.getElementsByName("pages")[0].value;
     const author = document.getElementsByName("author")[0].value;
     const title = document.getElementsByName("title")[0].value;
-    const readValue = document.getElementsByName("read")[0].checked;
-    let read = "";
-    readValue ? read = 'read' : read = "not read yet"
-    const newBook = new book(pages, author, title, read);
-    myLibrary.push(newBook)
-}
+    const read = document.getElementsByName("read")[0].checked;
+    const newBook = bookFactory(pages, author, title, read);
+    myLibrary.push(newBook);
 
 
-const render = ()=>{
-    createObject()
-    const section = document.getElementById("displayBook")
-    const div = document.createElement("div")
-    const removeBtn = document.createElement('button');
-
-    for (let i=0; i<myLibrary.length; i++){
-        section.appendChild(div);
-        div.appendChild(removeBtn)
-        div.setAttribute("id", i);  
-        removeBtn.classList.add("removeBtn");  
-    }
-    let btns = document.getElementsByClassName("removeBtn");
-
-    for(let i = 0; i < btns.length; i++) {
-        if (typeof(btns[i].onclick) == "undefined") {
-            // event undefined
-            btns[i].addEventListener("click", () => {
-            console.log("Clicked index: " + i);
-            })
-          }
-    }
-}
+    const displayBookSection = document.getElementById('displayBook');
+    // create a new element to hold the item
+    const itemElement = document.createElement('div');
+    itemElement.textContent = newBook.info();
+    // add the new element to the container
+    displayBookSection.appendChild(itemElement);
+  }
 
 
 
-// if(myLibrary.length > 0){
-//     for (let btn of btns){
-//     btn.addEventListener('click', () => {
-//         myLibrary.splice(myLibrary.indexOf(item),1);
-//         setData()
-//         render();
-//     });
-// }
 
 
 
-console.log(myLibrary.length);
-// Toggle form visibility
-const toggleFormOpen = () =>{
-    const form = document.querySelector("form");
-    form.classList.toggle("form-toggle");
-    console.log("clicked");
-}
 
-// Prevent Form Submition
-const element = document.querySelector('form');
-element.addEventListener('submit', event => {
-  event.preventDefault();
-  // actual logic, e.g. validate the form
-  console.log('Form submission cancelled.');
-})
+
+
 
 
 
