@@ -1,5 +1,3 @@
-jalaleddinebellouchi@gmail.com
-
 class Person {
   constructor(name, age, gender) {
     this.name = name;
@@ -46,5 +44,3 @@ try {
 } finally {
   // code to be executed regardless of whether an error was thrown or not
 }
-
-The code is printing the error message to the console in mozilla firefox, without the console.log()
