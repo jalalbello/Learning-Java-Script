@@ -91,4 +91,12 @@ The Interface Segregation Principle (ISP) states that clients should not be forc
 
 > Example: Making classes that do not have methods that they do not use
 > 
-# Dependency Inversion principle
+# Dependency Inversion principle.
+
+It's making sure that different parts of the code don’t depend too heavily on each other. It’s like making sure that the code is built like a house with a strong foundation. If one part of the house changes, then the other parts stay the same and don’t have to be rebuilt. This makes it easier and faster to make changes to your code without having to rewrite everything.
+
+# tightly coupled objects
+
+Tightly coupled objects are two objects that are connected together very closely. This means that if one of the objects changes, it will affect the other object. 
+
+This can cause problems because it can make it difficult to make changes to one object without also affecting the other object. We want to avoid them because it can make it difficult for us to make changes without breaking something else.

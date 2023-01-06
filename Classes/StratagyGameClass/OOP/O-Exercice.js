@@ -10,25 +10,25 @@ class Package{
         this.shippackage = package
         this.method = method
     }
-//     get price(){
-//         return this.calcPrice()
-//     }
-//     calcPrice(){
-//         return this.method(this.package)
-//     }
-//   }
+    get price(){
+        return this.calcPrice()
+    }
+    calcPrice(){
+        return this.method(this.package)
+    }
+  }
   
-//   class GroundShippingMethod{
-//     constructor(package){
-//         this.package = package
-//     }
-//     get formula(){
-//         return this.calcFormula()
-//     } 
-//     calcFormula(){
-//         let fixedcost = 10;
-//         return fixedcost + ((this.package.weight / 10) *(this.package.distance *0.05))
-//     }
+  class GroundShippingMethod{
+    constructor(package){
+        this.package = package
+    }
+    get formula(){
+        return this.calcFormula()
+    } 
+    calcFormula(){
+        let fixedcost = 10;
+        return fixedcost + ((this.package.weight / 10) *(this.package.distance *0.05))
+    }
   }
   
 
