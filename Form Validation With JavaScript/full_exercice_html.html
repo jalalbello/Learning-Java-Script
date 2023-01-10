@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="">
+    <!--! you cannot use the required attribute on individual radio inputs without the containing fieldset. -->
+    <p>
+      <fieldset>
+        <legend>
+          Do you have a Driver's license?<span aria-label="required">*</span>
+        </legend>
+        <input type="radio" name="driving_license" id="yes_driving_license" value="yes" required />
+        <label for="yes_driving_license">Yes</label>
+        <input type="radio" name="driving_license" id="no_driving_license" value="no" required />
+        <label for="no_driving_license">No</label>
+      </fieldset>
+    </p>
+    <p>
+      <label for="age">How old are you ?</label>
+      <input type="number" name="age" id="age" min="12" max="120" placeholder="Age" pattern="pattern=" \d+">
+    </p>
+    <datalist id="fruit_list">
+      <option>Banana</option>
+      <option>Cherry</option>
+      <option>Apple</option>
+      <option>Strawberry</option>
+      <option>Lemon</option>
+      <option>Orange</option>
+    </datalist>
+    <p>
+      <label for="fruit_list_input">Favorite Fruit ?<span aria-label="required">*</span></label>
+      <input type="text" name="fruit_list_input" id="fruit_list_input" list="fruit_list" required
+        pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range" />
+    </p>
+    <p>
+      <label for="user_email_input"> Enter email </label>
+      <input type="email" name="user_email_input" id="user_email_input" />
+    </p>
+    <p>
+      <label for="user_comment">Leave short message</label>
+      <textarea name="user_comment" id="user_comment" maxlength="120"></textarea>
+    </p>
+    <button type="submit">Submit</button>
+  </form>
+  <style>
+    :root {
+      --default-FS: 1em;
+      --default-FF: "Arial";
+    }
+
+    body {
+      font-size: var(--default-FS);
+      font-family: var(--default-FF);
+      box-sizing: border-box;
+    }
+
+    input:invalid {
+      box-shadow: 0 0 5px 1px red;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    textarea,
+    fieldset {
+      width: 100%;
+      border: 1px solid #333;
+      box-sizing: border-box;
+    }
+
+    input:focus:invalid {
+      box-shadow: none;
+    }
+
+    form {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  </style>
+</body>
+
+</html>
