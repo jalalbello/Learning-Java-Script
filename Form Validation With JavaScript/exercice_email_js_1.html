@@ -21,12 +21,12 @@
   </form>
 
   <script>
-    const form = document.querySelector("form")
-    const email_input = document.querySelector("#mail")
+    const form  = document.getElementsByTagName('form')[0];
+    const email = document.querySelector("#mail")
 
-    const error_message_element = document.querySelector("#mail + span.error") 
+    const emailError = document.querySelector("#mail + span.error") 
 
-    email_input.addEventListener("input", ()=>{
+    email.addEventListener("input", ()=>{
       if (email.validity.valid) {
         emailError.innerHTML = ''; // Reset the content of the message
         emailError.className = 'error'; // Reset the visual state of the message
@@ -35,7 +35,7 @@
       }
     });
 
-    email_input.addEventListener("submit", ()=>{
+    email.addEventListener("submit", ()=>{
       if (email.validity.valid) {
         emailError.innerHTML = ''; // Reset the content of the message
         emailError.className = 'error'; // Reset the visual state of the message
@@ -50,6 +50,8 @@
       if(!email.validity.valid) {
         // If it isn't, we display an appropriate error message
         showError();
+        // Without the code to display an appropriate error message, the form will be prevented from submitting, but the user will not know why
+
         // Then we prevent the form from being sent by canceling the event
         event.preventDefault();
       }
